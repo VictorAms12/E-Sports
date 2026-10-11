@@ -1,5 +1,6 @@
 package POOeED1;
 //Aqui ainda tem que fazer
+
 public class TabelaTorneio {
 
     private Time[] times;
@@ -12,16 +13,19 @@ public class TabelaTorneio {
     }
 
     public void adicionarTime(Time time) {
-        if (quantidadeTimes < times.length) {
+        if (buscaBinariaTime(time.getNome()) != -1) {
+            System.out.println("Time já cadastrado"); //Evitar duplicidadde do time
+            return;
+        }
+        else if (quantidadeTimes < times.length) {
             times[quantidadeTimes] = time;
             quantidadeTimes++;
         }
-
     }
 
     public int buscarSequencialTimes(String nome) {
         for (int i = 0; i < quantidadeTimes; i++) {
-            if (times[i].getNome().equals(nome)) {
+            if (times[i].getNome().equalsIgnoreCase(nome)) {
                 return i;
             }
         }
@@ -29,7 +33,21 @@ public class TabelaTorneio {
     }
 
     public void ordenarPorPontuacao() {
-
+        for (int i = 0; i < quantidadeTimes; i++) {
+            for (int j = 0; j < quantidadeTimes - 1 - i; j++) {
+                if (times[j].getPontos() < times[j + 1].getPontos()) {
+                    Time aux = times[j];
+                    times[j] = times[j + 1];
+                    times[j + 1] = aux;
+                } else if (times[j].getPontos() == times[j + 1].getPontos()) {
+                    if (times[j].getVitorias() < times[j + 1].getVitorias()) {
+                        Time aux = times[j];
+                        times[j] = times[j + 1];
+                        times[j + 1] = aux;
+                    }
+                }
+            }
+        }
     }
 
     public void ordenarPorNome() {
@@ -51,7 +69,7 @@ public class TabelaTorneio {
     }
 
     public void listarTimes() {
-        ordenarPorNome();
+        ordenarPorPontuacao();
         for (int i = 0; i < quantidadeTimes; i++) {
             IO.println("Time na posicao [" + i + "]");
             IO.println("Nome:" + times[i].getNome());
@@ -67,7 +85,7 @@ public class TabelaTorneio {
         int inicio = 0;
         while (inicio <= fim) {
             int meio = inicio + (fim - inicio) / 2;
-            if (times[meio].getNome().equals(nome)) {
+            if (times[meio].getNome().equalsIgnoreCase(nome)) {
                 return meio;
             }
             if (times[meio].getNome().compareTo(nome) < 0) {
@@ -79,10 +97,13 @@ public class TabelaTorneio {
         }
         return -1;
     }
-    public Time retornaObjetoVetor(int posicao){
+
+    public Time retornaObjetoVetor(int posicao) {
         Time time = times[posicao];
         return time;
     }
-
+    public int returnQuantidadeTimes(){
+        return quantidadeTimes;
+    }
 
 }

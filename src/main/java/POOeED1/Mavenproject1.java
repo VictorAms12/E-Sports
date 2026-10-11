@@ -15,7 +15,8 @@ public class Mavenproject1 {
                     + "1-Times\n"
                     + "2-Partidas\n"
                     + "3-Historico\n"
-                    + "4-Tabela Torneio");
+                    + "4-Tabela Torneio\n" +
+                            "-1 Sair");
             opcao = ler.nextInt();
 
             switch (opcao) {
@@ -26,8 +27,8 @@ public class Mavenproject1 {
                         System.out.println("Escolha uma opção:\n"
                                 + "1-Cadastrar Time\n"
                                 + "2-Consultar Times\n"
-                                );
-                        System.out.println("Digite -1 para sair do menu de times");
+                        );
+                        System.out.println("-1 Sair");
                         opcaoTime = ler.nextInt();
                         ler.nextLine();
                         switch (opcaoTime) {
@@ -56,68 +57,77 @@ public class Mavenproject1 {
                     break;
                 //Partidas
                 case 2:
-                                int opcaoPartida = 0;
-                                while(opcaoPartida!= -1){
-                                System.out.println("Escolha uma opção:\n"
+                    int opcaoPartida = 0;
+                    while (opcaoPartida != -1) {
+                        System.out.println("Escolha uma opção:\n"
                                 + "1-Cadastrar Partidas\n"
-                                + "2-Consultar Partida" +
-                                        "Digite -1 para sair do menu de Partidas");
-                                opcaoPartida = ler.nextInt();
-                                ler.nextLine();
-                                    switch(opcaoPartida){
-                                        case 1:
-                                            System.out.println("Informe o nome do primeiro time:");
-                                            String time1 = ler.nextLine();
-                                            int posicao1 = tabela.buscaBinariaTime(time1);
-                                            System.out.println("Informe o nome do segundo time:");
-                                            String time2 = ler.nextLine();
-                                            int posicao2 = tabela.buscaBinariaTime(time2);
-                                            System.out.println("Informe o pontuação do 1 e 2 time respectivamente:");
-                                            int pontos1 = ler.nextInt();
-                                            int pontos2 = ler.nextInt();
+                                + "2-Consultar Partida\n"
+                                + "-1 Sair");
+                        opcaoPartida = ler.nextInt();
+                        ler.nextLine();
+                        switch (opcaoPartida) {
+                            case 1:
+                                System.out.println("Informe o nome do primeiro time:");
+                                String time1 = ler.nextLine();
+                                int posicao1 = tabela.buscaBinariaTime(time1);
+                                System.out.println("Informe o nome do segundo time:");
+                                String time2 = ler.nextLine();
+                                int posicao2 = tabela.buscaBinariaTime(time2);
+                                System.out.println("Informe o pontuação do 1 e 2 time respectivamente:");
+                                int pontos1 = ler.nextInt();
+                                int pontos2 = ler.nextInt();
 
-                                      
-                                            if(posicao1 != -1 && posicao2 != -1){
-                                            Time timeobj1 = tabela.retornaObjetoVetor(posicao1);
-                                            Time timeobj2 = tabela.retornaObjetoVetor(posicao2);
-                                            Partida partida = new Partida(timeobj1,timeobj2, pontos1, pontos2);
-                                            historico.adicionarPartida(partida);
-                                            System.out.println("Partida Cadastrada!");
-                                            }
-                                            else{
-                                                System.out.println("Um ou os dois times não foram encontrados :(");
-                                            }
-                                            
-                                            break;
-                                        case 2:
-                                            System.out.println("Informe o indice a consultar:");
-                                            int indice = ler.nextInt();
-                                            historico.returnPartida(indice);
-                                            break;
-                                      
+                                if (posicao1 != -1 && posicao2 != -1) {
+                                    if(posicao1 != posicao2) {
+                                        Time timeobj1 = tabela.retornaObjetoVetor(posicao1);
+                                        Time timeobj2 = tabela.retornaObjetoVetor(posicao2);
+                                        Partida partida = new Partida(timeobj1, timeobj2, pontos1, pontos2);
+                                        historico.adicionarPartida(partida);
+                                        System.out.println("Partida Cadastrada!");
                                     }
+                                    else{
+                                        System.out.println("Time não pode disputar contra ele mesmo");
+                                    }
+
+                                } else {
+                                    System.out.println("Um ou os dois times não foram encontrados :(");
                                 }
-                    
-                    
+
+                                break;
+                            case 2:
+                                System.out.println("Informe o indice a consultar:");
+                                int indice = ler.nextInt();
+                                if(indice <= historico.retornaQuantidadePartidas()){
+                                    historico.returnPartida(indice);
+                                }
+                                else{
+                                    System.out.println("Indice ainda sem partida");
+                                }
+
+                                break;
+
+                        }
+                    }
+
                     break;
                 //Historico
                 case 3:
-                    //Aqui é pra listaras partidas, acho que a unica coisa que da pra fazer
+                    historico.listarPartidas();
                     break;
                 //TabelaTorneio
                 case 4:
                     int opcaoTabela = 0;
-                    while(opcaoTabela != -1){
-                        System.out.println("1-Lista times da tabela Torneio\n" +
-                                "Digite -1 para sair do menu de Tabela Torneio");
-                         opcaoTabela = ler.nextInt();
-                         switch (opcaoTabela){
-                             case 1:
-                                 tabela.listarTimes();
-                                 break;
-                         }
-                    }
+                    while (opcaoTabela != -1) {
+                        System.out.println("1-Lista times da tabela Torneio\n"
+                                + "-1 Sair");
+                        opcaoTabela = ler.nextInt();
+                        switch (opcaoTabela) {
+                            case 1:
 
+                                tabela.listarTimes();
+                                break;
+                        }
+                    }
 
             }
 
