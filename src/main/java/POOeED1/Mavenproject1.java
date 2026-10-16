@@ -26,7 +26,8 @@ public class Mavenproject1 {
                     while (opcaoTime != -1) {
                         System.out.println("Escolha uma opção:\n"
                                 + "1-Cadastrar Time\n"
-                                + "2-Consultar Times\n"
+                                + "2-Consultar Times\n" +
+                                "3-Remover time"
                         );
                         System.out.println("-1 Sair");
                         opcaoTime = ler.nextInt();
@@ -52,6 +53,19 @@ public class Mavenproject1 {
                                     System.out.println("Time não está na tabela");
                                 }
                                 break;
+                            case 3:
+                                System.out.println("Informe o nome do time a remover:");
+                                String nomeRemover =  ler.nextLine();
+                                int pos = tabela.buscaBinariaTime(nomeRemover);
+                                System.out.println("Time na posição:"+pos);
+                                if (pos != -1) {
+                                    tabela.removerTime(pos);
+                                    System.out.println("Time removido!");
+                                } else {
+                                    System.out.println("Time não está na tabela");
+                                }
+
+
                         }
                     }
                     break;
@@ -112,6 +126,30 @@ public class Mavenproject1 {
                     break;
                 //Historico
                 case 3:
+                    int opcaoHistorico = 0;
+                    while(opcaoHistorico != -1) {
+                        System.out.println("1-Listar Partidas\n" +
+                                "2-Consultar Partidas por Time\n" +
+                                "-1 Sair");
+                        opcaoHistorico = ler.nextInt();
+                         ler.nextLine();
+                                switch(opcaoHistorico) {
+                                    case 1:
+                                        historico.listarPartidas();
+                                        break;
+                                    case 2:
+                                        System.out.println("Informe o nome do time a pesquisar:");
+                                        String nome = ler.nextLine();
+                                        int quantidadePartidas = historico.quantidadePartidaPorTime(nome);
+                                        Partida [] partidasTime = historico.buscarPorTime(nome);
+                                        for(int i = 0; i < quantidadePartidas; i++){
+                                            String resul = partidasTime[i].toString();
+                                            System.out.println(resul);
+                                        }
+                                        break;
+
+                                }
+                    }
                     historico.listarPartidas();
                     break;
                 //TabelaTorneio

@@ -20,9 +20,7 @@ public class HistoricoPartidas {
             quantidadePartidas++;
         }
     }
-
-    public Partida[] buscarPorTime(String nome) {
-
+    public int quantidadePartidaPorTime(String nome){
         int quantidade = 0;
 
         for (int i = 0; i < quantidadePartidas; i++) {
@@ -33,6 +31,11 @@ public class HistoricoPartidas {
                 quantidade++;
             }
         }
+        return quantidade;
+    }
+    public Partida[] buscarPorTime(String nome) {
+
+        int quantidade = quantidadePartidaPorTime(nome);
 
         Partida[] resultado = new Partida[quantidade];
 
@@ -72,5 +75,27 @@ public class HistoricoPartidas {
     }
     public int retornaQuantidadePartidas(){
         return this.quantidadePartidas;
+    }
+    public Partida[] buscarPartidasPorTime(String nome){
+
+        int j = 0;
+        for(int i = 0; i < quantidadePartidas; i++){
+
+            if(partidas[i].getTime1().getNome().equalsIgnoreCase(nome) || partidas[i].getTime2().getNome().equalsIgnoreCase(nome)){
+                j++;
+            }
+
+        }
+        Partida [] partidasTime = new Partida[j];
+        j = 0;
+        for(int i = 0; i < quantidadePartidas; i++){
+
+            if(partidas[i].getTime1().getNome().equalsIgnoreCase(nome) || partidas[i].getTime2().getNome().equalsIgnoreCase(nome)){
+                partidasTime[j] = partidas[i];
+                j++;
+            }
+
+        }
+        return partidasTime;
     }
 }

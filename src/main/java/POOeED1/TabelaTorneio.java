@@ -105,5 +105,18 @@ public class TabelaTorneio {
     public int returnQuantidadeTimes(){
         return quantidadeTimes;
     }
+    public void removerTime(int pos){
+        for(int i = pos; i<= quantidadeTimes -1;i++){
+            if(i < quantidadeTimes-1){
+                times[i] = times[i+1];
+            }
+            else{
+                times[i] = null;
+            }
+
+        }
+        quantidadeTimes--;
+    }
+
 
 }
