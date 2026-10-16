@@ -29,6 +29,20 @@ public class Partida {
             this.vencedor = null;
         }
     }
+    public void desfazerResultado() {
+
+        if (vencedor == time1) {
+
+            time1.removerVitoria();
+            time2.removerDerrota();
+
+        } else if (vencedor == time2) {
+
+            time2.removerVitoria();
+            time1.removerDerrota();
+
+        }
+    }
 
     public Time getVencedor() {
         return vencedor;

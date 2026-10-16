@@ -76,5 +76,24 @@ public class HistoricoPartidas {
     public int retornaQuantidadePartidas(){
         return this.quantidadePartidas;
     }
+    public void removerPartida(int indice) {
+
+        if (indice < 0 || indice >= quantidadePartidas) {
+            System.out.println("Índice inválido.");
+            return;
+        }
+
+        partidas[indice].desfazerResultado();
+
+        for (int i = indice; i < quantidadePartidas - 1; i++) {
+            partidas[i] = partidas[i + 1];
+        }
+
+        partidas[quantidadePartidas - 1] = null;
+
+        quantidadePartidas--;
+
+        System.out.println("Partida removida com sucesso!");
+    }
 
 }

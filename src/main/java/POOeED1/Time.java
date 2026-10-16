@@ -43,6 +43,18 @@ public class Time {
         this.vitorias = this.vitorias + 1;
         this.pontos = this.pontos + 3;
     }
+    public void removerVitoria() {
+        if (this.vitorias > 0) {
+            this.vitorias--;
+            this.pontos -= 3;
+        }
+    }
+
+    public void removerDerrota() {
+        if (this.derrotas > 0) {
+            this.derrotas--;
+        }
+    }
 
     public void adicionarDerrota() {
         this.derrotas = this.derrotas + 1;

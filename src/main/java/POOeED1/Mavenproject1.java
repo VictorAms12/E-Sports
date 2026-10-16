@@ -8,6 +8,71 @@ public class Mavenproject1 {
         Scanner ler = new Scanner(System.in);
         TabelaTorneio tabela = new TabelaTorneio();
         HistoricoPartidas historico = new HistoricoPartidas();
+        Time t1 = new Time("FURIA");
+        Time t2 = new Time("LOUD");
+        Time t3 = new Time("MIBR");
+        Time t4 = new Time("PAIN");
+        Time t5 = new Time("RED Canids");
+        Time t6 = new Time("Fluxo");
+        Time t7 = new Time("Liberty");
+        Time t8 = new Time("Vivo Keyd");
+        Time t9 = new Time("INTZ");
+        Time t10 = new Time("Kabum");
+        Time t11 = new Time("Alpha");
+        Time t12 = new Time("Bravo");
+        Time t13 = new Time("Delta");
+        Time t14 = new Time("Omega");
+        Time t15 = new Time("Phoenix");
+        Time t16 = new Time("Titans");
+        Time t17 = new Time("Dragons");
+        Time t18 = new Time("Warriors");
+        Time t19 = new Time("Storm");
+        Time t20 = new Time("Galaxy");
+
+        tabela.adicionarTime(t1);
+        tabela.adicionarTime(t2);
+        tabela.adicionarTime(t3);
+        tabela.adicionarTime(t4);
+        tabela.adicionarTime(t5);
+        tabela.adicionarTime(t6);
+        tabela.adicionarTime(t7);
+        tabela.adicionarTime(t8);
+        tabela.adicionarTime(t9);
+        tabela.adicionarTime(t10);
+        tabela.adicionarTime(t11);
+        tabela.adicionarTime(t12);
+        tabela.adicionarTime(t13);
+        tabela.adicionarTime(t14);
+        tabela.adicionarTime(t15);
+        tabela.adicionarTime(t16);
+        tabela.adicionarTime(t17);
+        tabela.adicionarTime(t18);
+        tabela.adicionarTime(t19);
+        tabela.adicionarTime(t20);
+
+        historico.adicionarPartida(new Partida(t1, t2, 3, 1));
+        historico.adicionarPartida(new Partida(t3, t4, 2, 0));
+        historico.adicionarPartida(new Partida(t5, t6, 1, 3));
+        historico.adicionarPartida(new Partida(t7, t8, 2, 1));
+        historico.adicionarPartida(new Partida(t9, t10, 0, 2));
+
+        historico.adicionarPartida(new Partida(t11, t12, 4, 1));
+        historico.adicionarPartida(new Partida(t13, t14, 1, 2));
+        historico.adicionarPartida(new Partida(t15, t16, 3, 0));
+        historico.adicionarPartida(new Partida(t17, t18, 2, 4));
+        historico.adicionarPartida(new Partida(t19, t20, 1, 0));
+
+        historico.adicionarPartida(new Partida(t1, t3, 2, 1));
+        historico.adicionarPartida(new Partida(t2, t4, 3, 2));
+        historico.adicionarPartida(new Partida(t5, t7, 2, 0));
+        historico.adicionarPartida(new Partida(t6, t8, 1, 2));
+        historico.adicionarPartida(new Partida(t9, t11, 3, 1));
+
+        historico.adicionarPartida(new Partida(t10, t12, 2, 1));
+        historico.adicionarPartida(new Partida(t13, t15, 0, 3));
+        historico.adicionarPartida(new Partida(t14, t16, 1, 2));
+        historico.adicionarPartida(new Partida(t17, t19, 4, 2));
+        historico.adicionarPartida(new Partida(t18, t20, 2, 3));
         int opcao = 0;
         while (opcao != -1) {
             System.out.println(
@@ -76,7 +141,8 @@ public class Mavenproject1 {
                         System.out.println("Escolha uma opção:\n"
                                 + "1-Cadastrar Partidas\n"
                                 + "2-Consultar Partida\n"
-                                + "-1 Sair");
+                                + "3-Remover Partida\n" +
+                                "-1 Sair");
                         opcaoPartida = ler.nextInt();
                         ler.nextLine();
                         switch (opcaoPartida) {
@@ -109,6 +175,7 @@ public class Mavenproject1 {
 
                                 break;
                             case 2:
+
                                 System.out.println("Informe o indice a consultar:");
                                 int indice = ler.nextInt();
                                 if(indice <= historico.retornaQuantidadePartidas()){
@@ -119,6 +186,24 @@ public class Mavenproject1 {
                                 }
 
                                 break;
+                            case 3:
+                                historico.listarPartidas();
+                                System.out.println("Informe o índice da partida que deseja remover:");
+                                int partidaRemovida = ler.nextInt();
+
+                                System.out.println("Informe o indice a remover");
+
+                                if(partidaRemovida <= historico.retornaQuantidadePartidas()){
+                                    historico.removerPartida(partidaRemovida);
+                                }
+                                else{
+                                    System.out.println("Partida Removida");
+                                }
+
+
+
+
+
 
                         }
                     }
