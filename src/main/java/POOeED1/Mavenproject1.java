@@ -92,7 +92,8 @@ public class Mavenproject1 {
                         System.out.println("Escolha uma opção:\n"
                                 + "1-Cadastrar Time\n"
                                 + "2-Consultar Times\n" +
-                                "3-Remover time"
+                                "3-Remover time\n" +
+                                "4-Editar Time"
                         );
                         System.out.println("-1 Sair");
                         opcaoTime = ler.nextInt();
@@ -129,6 +130,19 @@ public class Mavenproject1 {
                                 } else {
                                     System.out.println("Time não está na tabela");
                                 }
+                            case 4:
+                                System.out.println("Informe o nome do time a editar:");
+                                String nomeAntigo =  ler.nextLine();
+                                int posEdit = tabela.buscaBinariaTime(nomeAntigo);
+                                if (posEdit != -1) {
+                                    System.out.println("Informe o novo nome");
+                                    String nomeNovo = ler.nextLine();
+                                    tabela.editarNomeTime(nomeNovo, posEdit);
+                                    System.out.println("Time editado");
+                                } else {
+                                    System.out.println("Time não está na tabela");
+                                }
+
 
 
                         }
@@ -191,13 +205,12 @@ public class Mavenproject1 {
                                 System.out.println("Informe o índice da partida que deseja remover:");
                                 int partidaRemovida = ler.nextInt();
 
-                                System.out.println("Informe o indice a remover");
-
                                 if(partidaRemovida <= historico.retornaQuantidadePartidas()){
                                     historico.removerPartida(partidaRemovida);
+                                    System.out.println("Partida Removida");
                                 }
                                 else{
-                                    System.out.println("Partida Removida");
+                                    System.out.println("Indicie invalido");
                                 }
 
 

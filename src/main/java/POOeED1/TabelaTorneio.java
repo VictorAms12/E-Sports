@@ -12,6 +12,11 @@ public class TabelaTorneio {
 
     }
 
+    public void editarNomeTime(String nome, int pos){
+        times[pos].setNome(nome);
+    }
+
+
     public void adicionarTime(Time time) {
         if (buscaBinariaTime(time.getNome()) != -1) {
             System.out.println("Time já cadastrado"); //Evitar duplicidadde do time
@@ -71,10 +76,10 @@ public class TabelaTorneio {
     public void listarTimes() {
         ordenarPorPontuacao();
         for (int i = 0; i < quantidadeTimes; i++) {
-            IO.println("Time na posicao [" + i + "]");
-            IO.println("Nome:" + times[i].getNome());
-            IO.println("Vitorias:" + times[i].getVitorias());
-            IO.println("Pontos:" + times[i].getPontos());
+            System.out.println("Time na posicao [" + i + "]");
+            System.out.println("Nome:" + times[i].getNome());
+            System.out.println("Vitorias:" + times[i].getVitorias());
+            System.out.println("Pontos:" + times[i].getPontos());
 
         }
     }
@@ -88,10 +93,10 @@ public class TabelaTorneio {
             if (times[meio].getNome().equalsIgnoreCase(nome)) {
                 return meio;
             }
-            if (times[meio].getNome().compareTo(nome) < 0) {
+            if (times[meio].getNome().compareToIgnoreCase(nome) < 0) {
                 inicio = meio + 1;
             }
-            if (times[meio].getNome().compareTo(nome) > 0) {
+            if (times[meio].getNome().compareToIgnoreCase(nome) > 0) {
                 fim = meio - 1;
             }
         }
