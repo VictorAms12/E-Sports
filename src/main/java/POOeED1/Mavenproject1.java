@@ -130,6 +130,7 @@ public class Mavenproject1 {
                                 } else {
                                     System.out.println("Time não está na tabela");
                                 }
+                                break;
                             case 4:
                                 System.out.println("Informe o nome do time a editar:");
                                 String nomeAntigo =  ler.nextLine();
@@ -212,6 +213,7 @@ public class Mavenproject1 {
                                 else{
                                     System.out.println("Indicie invalido");
                                 }
+                                break;
 
 
 
