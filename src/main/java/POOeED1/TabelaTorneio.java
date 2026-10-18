@@ -72,7 +72,14 @@ public class TabelaTorneio {
             }
         }
     }
+    public void informacoesTime(int pos){
+        System.out.println("Time na posicao [" + pos+ "]");
+        System.out.println("Nome:" + times[pos].getNome());
+        System.out.println("Vitorias:" + times[pos].getVitorias());
+        System.out.println("Pontos:" + times[pos].getPontos());
+        System.out.println("Derrotas:" + times[pos].getDerrotas());
 
+    }
     public void listarTimes() {
         ordenarPorPontuacao();
         for (int i = 0; i < quantidadeTimes; i++) {

@@ -18,16 +18,6 @@ public class Mavenproject1 {
         Time t8 = new Time("Vivo Keyd");
         Time t9 = new Time("INTZ");
         Time t10 = new Time("Kabum");
-        Time t11 = new Time("Alpha");
-        Time t12 = new Time("Bravo");
-        Time t13 = new Time("Delta");
-        Time t14 = new Time("Omega");
-        Time t15 = new Time("Phoenix");
-        Time t16 = new Time("Titans");
-        Time t17 = new Time("Dragons");
-        Time t18 = new Time("Warriors");
-        Time t19 = new Time("Storm");
-        Time t20 = new Time("Galaxy");
 
         tabela.adicionarTime(t1);
         tabela.adicionarTime(t2);
@@ -39,16 +29,6 @@ public class Mavenproject1 {
         tabela.adicionarTime(t8);
         tabela.adicionarTime(t9);
         tabela.adicionarTime(t10);
-        tabela.adicionarTime(t11);
-        tabela.adicionarTime(t12);
-        tabela.adicionarTime(t13);
-        tabela.adicionarTime(t14);
-        tabela.adicionarTime(t15);
-        tabela.adicionarTime(t16);
-        tabela.adicionarTime(t17);
-        tabela.adicionarTime(t18);
-        tabela.adicionarTime(t19);
-        tabela.adicionarTime(t20);
 
         historico.adicionarPartida(new Partida(t1, t2, 3, 1));
         historico.adicionarPartida(new Partida(t3, t4, 2, 0));
@@ -56,23 +36,23 @@ public class Mavenproject1 {
         historico.adicionarPartida(new Partida(t7, t8, 2, 1));
         historico.adicionarPartida(new Partida(t9, t10, 0, 2));
 
-        historico.adicionarPartida(new Partida(t11, t12, 4, 1));
-        historico.adicionarPartida(new Partida(t13, t14, 1, 2));
-        historico.adicionarPartida(new Partida(t15, t16, 3, 0));
-        historico.adicionarPartida(new Partida(t17, t18, 2, 4));
-        historico.adicionarPartida(new Partida(t19, t20, 1, 0));
-
         historico.adicionarPartida(new Partida(t1, t3, 2, 1));
         historico.adicionarPartida(new Partida(t2, t4, 3, 2));
         historico.adicionarPartida(new Partida(t5, t7, 2, 0));
         historico.adicionarPartida(new Partida(t6, t8, 1, 2));
-        historico.adicionarPartida(new Partida(t9, t11, 3, 1));
+        historico.adicionarPartida(new Partida(t9, t1, 3, 1));
 
-        historico.adicionarPartida(new Partida(t10, t12, 2, 1));
-        historico.adicionarPartida(new Partida(t13, t15, 0, 3));
-        historico.adicionarPartida(new Partida(t14, t16, 1, 2));
-        historico.adicionarPartida(new Partida(t17, t19, 4, 2));
-        historico.adicionarPartida(new Partida(t18, t20, 2, 3));
+        historico.adicionarPartida(new Partida(t10, t2, 2, 1));
+        historico.adicionarPartida(new Partida(t3, t5, 0, 3));
+        historico.adicionarPartida(new Partida(t4, t6, 1, 2));
+        historico.adicionarPartida(new Partida(t7, t9, 4, 2));
+        historico.adicionarPartida(new Partida(t8, t10, 2, 3));
+
+        historico.adicionarPartida(new Partida(t1, t5, 1, 0));
+        historico.adicionarPartida(new Partida(t2, t6, 2, 4));
+        historico.adicionarPartida(new Partida(t3, t7, 3, 2));
+        historico.adicionarPartida(new Partida(t4, t8, 1, 3));
+        historico.adicionarPartida(new Partida(t9, t5, 2, 1));
         int opcao = 0;
         while (opcao != -1) {
             System.out.println(
@@ -114,7 +94,8 @@ public class Mavenproject1 {
                                 String nomeConsulta = ler.nextLine();
                                 int posicao = tabela.buscaBinariaTime(nomeConsulta);
                                 if (posicao != -1) {
-                                    System.out.println("Posicao do Time:" + posicao);
+
+                                    tabela.informacoesTime(posicao);
                                 } else {
                                     System.out.println("Time não está na tabela");
                                 }
