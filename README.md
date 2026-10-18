@@ -84,7 +84,7 @@ O projeto foi desenvolvido para praticar conceitos de:
 
 Integrantes do grupo:
 
--Victor Alexandre
--Heitor de Sousa
--João Gabriel
--Ricardo Leite
+- Victor Alexandre
+- Heitor de Sousa
+- João Gabriel
+- Ricardo Leite
